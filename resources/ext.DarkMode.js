@@ -44,21 +44,13 @@ $( () => {
 		// See comments in Hooks::onBeforePageDisplay() for more information.
 		const darkMode = !docClassList.contains( 'skin-theme-clientpref-night' );
 
-		if ( mw.user.isAnon() ) {
-			// If the user is anonymous (not logged in) write a cookie
-			mw.user.clientPrefs.set( 'skin-theme', darkMode ? 'night' : 'day' );
-		} else {
-			// If the user is logged in write with API to user settings
+		localStorage.setItem("skin-theme", darkMode ? 'night' : 'day' );
+		docClassList.add( darkMode ? 'skin-theme-clientpref-night' : "skin-theme-clientpref-day" )
+		docClassList.remove( darkMode ? 'skin-theme-clientpref-day' : 'skin-theme-clientpref-night');
+		if ( darkMode ) docClassList.add( 'client-darkmode' );
+		if ( !darkMode ) docClassList.remove( 'client-darkmode' );
+		if (!mw.user.isAnon() ) {
 			new mw.Api().saveOption( 'darkmode', darkMode ? '1' : '0' );
-			if ( darkMode ) {
-				docClassList.add( 'skin-theme-clientpref-night' );
-				docClassList.add( 'client-darkmode' );
-				docClassList.remove( 'skin-theme-clientpref-day' );
-			} else {
-				docClassList.add( 'skin-theme-clientpref-day' );
-				docClassList.remove( 'client-darkmode' );
-				docClassList.remove( 'skin-theme-clientpref-night' );
-			}
 		}
 		updateLink( darkMode );
 

@@ -24,21 +24,6 @@
 		height: 100%;
 	}
 
-	.ext-darkmode-link::before {
-		content: '\263E'; /* Moon icon */
-		display: inline-block;
-
-		/* "Default mode" link */
-		.skin-theme-clientpref-night & {
-			content: '\263C'; /* Sun icon */
-		}
-
-		/* Vector 2022 has its own icon, set in Hooks.php */
-		.skin-vector-2022 & {
-			display: none;
-		}
-	}
-
 	/* START OF DARKMODE STYLES */
 	.skin-theme-clientpref-night,
 	.client-darkmode {

@@ -1,12 +1,13 @@
 {
 	"@metadata": {
 		"authors": [
-			"MusikAnimal"
+			"MusikAnimal",
+			"gyaru"
 		]
 	},
-	"darkmode-desc": "A toggleable dark mode for the MediaWiki user interface",
-	"darkmode-link": "Dark mode",
-	"darkmode-link-tooltip": "Turn dark mode on",
-	"darkmode-default-link": "Default mode",
-	"darkmode-default-link-tooltip": "Turn dark mode off"
+	"darkmode-desc": "A toggleable dark theme for the MediaWiki user interface",
+	"darkmode-link": "Dark theme",
+	"darkmode-link-tooltip": "Turn dark theme on",
+	"darkmode-default-link": "Light theme",
+	"darkmode-default-link-tooltip": "Turn dark theme off"
 }

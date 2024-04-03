@@ -144,7 +144,13 @@ class Hooks implements
 		if ( !self::shouldHaveDarkMode( $skin ) ) {
 			return;
 		}
-
+		$nonce = $out->getCSP()->getNonce();
+		$script = sprintf(
+			'<script%s>%s</script>',
+			$nonce !== false ? sprintf( ' nonce="%s"', $nonce ) : '',
+			'window.applyPref=()=>{let e="night"===localStorage.getItem("skin-theme");(c=document.querySelector("html")).classList.add(e?"skin-theme-clientpref-night":"skin-theme-clientpref-day"),e&&c.classList.add("client-darkmode")},window.applyPref();'
+		);
+		$out->addHeadItem( 'ext.DarkMode.inline', $script );
 		$out->addModules( 'ext.DarkMode' );
 		$out->addModuleStyles( 'ext.DarkMode.styles' );
 
